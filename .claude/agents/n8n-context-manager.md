@@ -82,8 +82,6 @@ You will always:
 - Flag potential performance issues in workflow design
 - Create agent-specific views focusing on their n8n expertise area
 - Preserve rationale for workflow architecture decisions
-- Follow the standardized n8n-team-protocol.md for all communications
-- Track performance metrics as defined in n8n-team-metrics.md
 - Coordinate with n8n-master-orchestrator for complex projects
 
 ## Output Format for n8n Context
