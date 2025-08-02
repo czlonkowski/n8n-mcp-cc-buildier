@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "n8n-mcp": {
+      "command": "docker",
+      "args": ["exec", "-i", "n8n-mcp-server", "node", "/app/dist/mcp/index.js"],
+      "env": {}
+    }
+  }
+}
