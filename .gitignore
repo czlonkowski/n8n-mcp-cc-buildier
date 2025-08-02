@@ -1,0 +1,13 @@
+# Ignore everything in workflows folder except the folder itself
+workflows/*
+!workflows/.gitkeep
+
+# Common files
+.DS_Store
+*.log
+node_modules/
+.env
+.env.local
+*.swp
+*.swo
+*~

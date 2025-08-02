@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  n8n:
+    image: n8nio/n8n:latest
+    container_name: n8n-test
+    ports:
+      - "5678:5678"
+    environment:
+      - N8N_BASIC_AUTH_ACTIVE=false
+      - N8N_HOST=localhost
+      - N8N_PORT=5678
+      - N8N_PROTOCOL=http
+      - NODE_ENV=development
+      - N8N_COMMUNITY_PACKAGES_ALLOW_TOOL_USAGE=true
+    volumes:
+      - ${HOME}/.n8n-mcp-test:/home/node/.n8n
+    networks:
+      - n8n-mcp-network
+
+  n8n-mcp:
+    image: ghcr.io/czlonkowski/n8n-mcp:latest
+    container_name: n8n-mcp-server
+    environment:
+      - N8N_API_KEY=${N8N_API_KEY}
+      - N8N_API_URL=http://n8n:5678/api/v1
+    networks:
+      - n8n-mcp-network
+    depends_on:
+      - n8n
+
+networks:
+  n8n-mcp-network:
+    driver: bridge
