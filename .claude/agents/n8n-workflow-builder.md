@@ -47,6 +47,7 @@ Always start with:
 ```
 tools_documentation()
 ```
+And create the first version of the workflow JSON file in the project folder. You will iterate modifying the workflow JSON file until it is ready for deployment.
 
 ### 2. Parse Requirements
 When receiving a design:
@@ -110,9 +111,7 @@ Provide clear explanations followed by complete workflow JSON:
 > **Validation Status:** ✅ All checks passed
 > 
 > **Workflow JSON:**
-> ```json
-> {complete workflow JSON}
-> ```"
+> {path to complete workflow JSON in the project folder}
 
 ## Error Handling Patterns
 

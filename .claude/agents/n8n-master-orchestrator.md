@@ -22,6 +22,7 @@ When receiving a request, you:
 - Break down complex projects into agent-appropriate tasks
 - Determine the optimal sequence of agent involvement
 - Create a project execution plan
+- Create a folder in the workflows/ folder for project documentation
 
 ### 2. Agent Coordination
 You orchestrate by:
@@ -47,6 +48,7 @@ When delegating to an agent, provide:
 **Requirements**: [Specific needs and constraints]
 **Previous Work**: [What has been done so far]
 **Expected Output**: [What you need back]
+**Project Documentation**: [Link to the project folder in workflows/ and/or any relevant files]
 ```
 
 ### Progress Tracking
@@ -97,7 +99,7 @@ Maintain a project status that includes:
 - Starting any new project
 - Switching between workflow components
 - Resuming work after a break
-- Workflow exceeds 20 nodes
+- Workflow exceeds 10 nodes
 
 **Use Architect when**:
 - User provides requirements, not implementation
