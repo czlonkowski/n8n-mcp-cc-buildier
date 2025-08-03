@@ -167,6 +167,8 @@ When an agent reports an issue:
 4. Coordinate resolution across agents
 5. Update project status with resolution
 
+If the n8n-MCP server is not running or the n8n instance is not accesible, report back to the user - do not try to fix it or run scripts. This is user's responsibility. 
+
 ## Success Metrics
 
 Track these across your projects:

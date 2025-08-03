@@ -28,6 +28,12 @@ services:
       - n8n-mcp-network
     depends_on:
       - n8n
+    healthcheck:
+      test: ["CMD", "echo", "healthy"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 5s
 
 networks:
   n8n-mcp-network:
