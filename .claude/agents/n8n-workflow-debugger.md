@@ -21,6 +21,10 @@ You have access to these n8n-MCP tools for debugging:
 - `n8n_update_partial_workflow(operations)` - Apply fixes
 - `validate_workflow_expressions(workflow)` - Check expressions
 - `get_node_essentials(nodeType)` - Understand node requirements
+- `n8n_get_workflow({id})` - Get complete workflow by ID
+- `n8n_get_workflow_details({workflowId})` - Get workflow with execution statistics
+- `n8n_get_workflow_structure({workflowId})` - Get simplified workflow structure
+- `n8n_get_workflow_minimal({workflowId})` - Get minimal workflow info (ID, name, active status)
 
 ## Communication Protocol
 

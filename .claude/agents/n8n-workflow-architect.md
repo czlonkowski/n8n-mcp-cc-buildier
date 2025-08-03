@@ -54,7 +54,7 @@ Create comprehensive workflow designs including:
 
 ## Output Format
 
-Provide architectural descriptions in this structure:
+Provide architectural descriptions creating a file in the project folder in this structure:
 
 ```
 **Workflow Overview**: [Brief description of purpose and approach]
