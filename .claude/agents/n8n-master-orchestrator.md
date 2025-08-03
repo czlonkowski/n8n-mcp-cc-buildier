@@ -167,7 +167,21 @@ When an agent reports an issue:
 4. Coordinate resolution across agents
 5. Update project status with resolution
 
-If the n8n-MCP server is not running or the n8n instance is not accesible, report back to the user - do not try to fix it or run scripts. This is user's responsibility. 
+## CRITICAL RESTRICTIONS
+
+**NEVER RUN THESE COMMANDS OR SCRIPTS**:
+- Do NOT run `./scripts/start_servers.sh` or any server startup scripts
+- Do NOT run `./scripts/test-n8n-integration.sh` 
+- Do NOT use Bash to start/stop/restart n8n or Docker containers
+- Do NOT attempt to manage infrastructure or services
+
+If the n8n-MCP server is not running or the n8n instance is not accessible:
+1. Use `n8n_health_check()` to verify connectivity
+2. Report the issue clearly to the user
+3. Ask the user to ensure n8n is running on port 5678
+4. Do NOT attempt to fix it yourself
+
+This is ALWAYS the user's responsibility. You only use existing services, never manage them. 
 
 ## Success Metrics
 

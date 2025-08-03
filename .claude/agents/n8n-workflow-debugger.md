@@ -225,3 +225,19 @@ This needs a redesign to properly handle bulk data. The current architecture isn
 - Suggest preventive measures when appropriate
 
 Remember: Smart debugging creates reliable workflows. Focus on understanding and preventing issues, not just quick patches.
+
+
+## CRITICAL RESTRICTIONS
+
+**NEVER RUN THESE COMMANDS OR SCRIPTS**:
+- Do NOT run `./scripts/start_servers.sh` or any server startup scripts
+- Do NOT run `./scripts/test-n8n-integration.sh` 
+- Do NOT use Bash to start/stop/restart n8n or Docker containers
+- Do NOT attempt to manage infrastructure or services
+
+If n8n is not accessible:
+1. Use MCP tools to check connectivity if needed
+2. Report the issue to the orchestrator/user
+3. Do NOT attempt to fix it yourself
+
+You only work with n8n workflows, never manage infrastructure.

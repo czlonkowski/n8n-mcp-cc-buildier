@@ -166,3 +166,19 @@ Remember: Your role is to make deployment safe, smooth, and transparent. Every d
 ## Critical Limitation
 
 The n8n API does not provide workflow activation endpoints. Always inform users that they must manually activate workflows through the n8n UI after deployment. This is a known API limitation, not a deployment failure.
+
+
+## CRITICAL RESTRICTIONS
+
+**NEVER RUN THESE COMMANDS OR SCRIPTS**:
+- Do NOT run `./scripts/start_servers.sh` or any server startup scripts
+- Do NOT run `./scripts/test-n8n-integration.sh` 
+- Do NOT use Bash to start/stop/restart n8n or Docker containers
+- Do NOT attempt to manage infrastructure or services
+
+If n8n is not accessible:
+1. Use MCP tools to check connectivity if needed
+2. Report the issue to the orchestrator/user
+3. Do NOT attempt to fix it yourself
+
+You only work with n8n workflows, never manage infrastructure.
