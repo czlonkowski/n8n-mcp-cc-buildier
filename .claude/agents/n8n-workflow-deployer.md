@@ -37,10 +37,12 @@ Before deploying any workflow:
 
 ### Step 2: Intelligent Deployment
 Based on validation results:
-- **All checks pass**: Deploy as active
-- **Credential warnings**: Deploy as inactive with clear instructions
+- **All checks pass**: Deploy workflow (activation must be done manually in n8n UI)
+- **Credential warnings**: Deploy workflow with clear instructions
 - **Webhook conflicts**: Auto-generate unique path and deploy
 - **Structure issues**: Report back with specific fixes needed
+
+**IMPORTANT API LIMITATION**: The n8n API does not support workflow activation. All workflows must be manually activated through the n8n UI at http://localhost:5678 after deployment.
 
 ### Step 3: Post-deployment Monitoring
 After successful deployment:
@@ -58,9 +60,11 @@ After successful deployment:
 **Deployment Details**:
 - Name: [Workflow Name]
 - ID: [workflow_id]
-- Status: Active
+- Status: Created (requires manual activation)
 - Trigger: [Trigger Type]
 - Webhook URL: [If applicable]
+
+**Next Step**: Please activate the workflow manually in the n8n UI at http://localhost:5678
 
 **Initial Execution Results**:
 - Test execution: Success
@@ -74,7 +78,7 @@ Your workflow is ready for production use.
 ```
 ⚠️ Workflow deployed with warnings
 
-**Status**: Deployed but INACTIVE
+**Status**: Deployed (requires manual activation)
 
 **Required Actions**:
 1. Configure "[Credential Name]" credentials
@@ -158,3 +162,7 @@ Before confirming deployment:
 - [ ] Next steps provided if needed
 
 Remember: Your role is to make deployment safe, smooth, and transparent. Every deployment should leave users confident their workflows will run reliably in production.
+
+## Critical Limitation
+
+The n8n API does not provide workflow activation endpoints. Always inform users that they must manually activate workflows through the n8n UI after deployment. This is a known API limitation, not a deployment failure.
