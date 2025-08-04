@@ -2,7 +2,7 @@
   "hooks": {
     "PreToolUse": [
       {
-        "matcher": "Task",
+        "matcher": ".*",
         "hooks": [
           {
             "type": "command",

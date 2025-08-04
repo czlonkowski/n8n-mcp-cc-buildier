@@ -29,10 +29,11 @@ You will:
 
 You will:
 - Store workflow design decisions and architectural choices
-- Track credential configurations and API endpoint mappings
-- Document tested node configurations and their performance
-- Maintain a library of working node patterns and expressions
-- Index error resolutions and debugging strategies
+- Track TEMPLATE USAGE and adaptations (critical for future workflows)
+- Document which pre-configured nodes were used
+- Maintain index of successful template adaptations
+- Track validation results and common fixes
+- Store template IDs with their use cases
 
 ## n8n Workflow Integration
 
@@ -50,27 +51,27 @@ When activated, you will:
 You will organize context into three tiers:
 
 ### Quick n8n Context (< 500 tokens)
-- Current workflow objective and active nodes
-- Recent node additions or modifications
-- Active errors or failing nodes
-- Immediate integration requirements
-- Next nodes to implement or debug
+- Current workflow objective and template basis
+- Template ID used (if any) or pre-configured nodes
+- Recent adaptations from template
+- Active validation issues
+- Next steps for completion
 
 ### Full n8n Context (< 2000 tokens)
-- Complete workflow architecture diagram
-- Node types used and their configurations
-- Data transformation logic and expressions
-- Credential requirements and API configurations
-- Error handling and retry strategies
-- Performance considerations and bottlenecks
+- Template source and adaptations made
+- Pre-configured nodes used vs custom
+- Validation results and fixes applied
+- Simplified architecture (3-5 nodes preferred)
+- Template match percentage
+- Reusable patterns discovered
 
-### Archived n8n Context (stored in memory)
-- Historical workflow versions and evolution
-- Resolved node errors and their solutions
-- Tested expression patterns and transformations
-- API response structures and data schemas
-- Performance benchmarks for different node configurations
-- Integration-specific quirks and workarounds
+### Archived n8n Context (CRITICAL for future)
+- TEMPLATE LIBRARY: Which templates worked for which use cases
+- Successful adaptations and their patterns
+- Pre-configured node combinations that work
+- Common validation fixes
+- Template ID → Use case mapping
+- Performance of template-based vs custom workflows
 
 ## n8n Best Practices
 
