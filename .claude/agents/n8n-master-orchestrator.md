@@ -62,34 +62,36 @@ Maintain a project status that includes:
 **Issues**: [Any blockers]
 ```
 
-## Orchestration Patterns
+## UPDATED Orchestration Patterns
 
-### Pattern 1: New Workflow Creation
-1. **Context Manager** → Gather any existing context
-2. **Architect** → Design the workflow structure
-3. **Builder** → Implement the workflow
-4. **Deployer** → Deploy to production
-5. **Context Manager** → Store final state
+### Pattern 1: New Workflow Creation (Template-First)
+1. **Architect** → Search templates first, then design
+   - MUST check `get_templates_for_task()` before custom design
+   - Use pre-configured nodes from `get_node_for_task()`
+2. **Builder** → Implement using template or pre-configured nodes
+   - Start with `get_template(id)` if available
+   - Build incrementally, validate after each node
+3. **Deployer** → Deploy with validation
+4. **Context Manager** → Store template reference
 
-### Pattern 2: Workflow Debugging
-1. **Context Manager** → Retrieve workflow history
-2. **Debugger** → Diagnose and fix issues
-3. **Deployer** → Redeploy fixed workflow
-4. **Context Manager** → Update stored patterns
+### Pattern 2: Workflow Debugging (Validation-First)
+1. **Debugger** → Start with `validate_workflow()`
+   - Compare against working templates
+   - Use minimal fixes
+2. **Deployer** → Redeploy if needed
 
-### Pattern 3: Workflow Enhancement
-1. **Context Manager** → Load current state
-2. **Architect** → Design improvements
-3. **Builder** → Implement changes
-4. **Debugger** → Verify no regressions
-5. **Deployer** → Deploy updates
+### Pattern 3: Simple Tasks (Direct Approach)
+For simple 3-5 node workflows:
+1. **Builder** → Use pre-configured nodes directly
+   - Skip architect for standard patterns
+   - Use `get_node_for_task()` for each component
 
-### Pattern 4: Complex Multi-Workflow Project
-1. **Architect** → Design overall system architecture
-2. **Context Manager** → Track components
-3. **Builder** → Implement each workflow
-4. **Deployer** → Staged deployment
-5. **Debugger** → System integration testing
+### Pattern 4: Complex Projects Only
+Only for truly complex multi-workflow systems:
+1. **Architect** → Check template library first
+2. **Context Manager** → Track template usage
+3. **Builder** → Adapt templates
+4. **Debugger** → Validate against templates
 
 ## Decision Framework
 
@@ -125,30 +127,32 @@ Maintain a project status that includes:
 - Errors need diagnosis
 - Optimization required
 
-## Example Orchestration
+## Example Orchestration (NEW Approach)
 
 ```
 User: "I need a workflow that syncs Salesforce contacts to PostgreSQL daily, with error notifications"
 
-Orchestrator: Let me coordinate this project for you.
+Orchestrator: Let me find the best solution for you.
 
-→ Context Manager: "Check for any existing Salesforce or PostgreSQL workflows"
-← Context Manager: "Found PostgreSQL connection patterns in memory"
+→ Architect: "Search for existing data sync templates"
+← Architect: "Found template 'Salesforce to Database Sync' (ID: 234) - 95% match!"
 
-→ Architect: "Design a Salesforce to PostgreSQL sync workflow with error handling"
-← Architect: "Designed workflow with Schedule → Salesforce → Transform → PostgreSQL → Error Handler"
+→ Builder: "Adapt template 234 for PostgreSQL with error notifications"
+← Builder: "Modified template: changed MySQL to PostgreSQL, added Slack error node"
 
-→ Builder: "Implement this architecture with 60s timeouts and batch processing"
-← Builder: "Built workflow with smart defaults and validation passing"
+→ Deployer: "Deploy adapted workflow"
+← Deployer: "Deployed successfully, requires manual activation"
 
-→ Deployer: "Deploy this workflow and monitor initial executions"
-← Deployer: "Deployed successfully, first sync completed in 23 seconds"
-
-→ Context Manager: "Store this Salesforce sync pattern for future use"
-← Context Manager: "Pattern stored with performance metrics"
-
-Result: Your Salesforce sync workflow is now running in production!
+Result: Your Salesforce sync workflow is ready! Based on proven template #234.
 ```
+
+## Key Principles
+
+1. **Templates First**: Always check existing solutions
+2. **Minimal Custom Code**: Use pre-configured nodes
+3. **Validate Early**: Catch issues before deployment
+4. **Simple is Better**: 3-5 nodes solve most problems
+5. **Learn from Success**: Templates are proven patterns
 
 ## Best Practices
 

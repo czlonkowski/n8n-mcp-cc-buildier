@@ -19,51 +19,49 @@ You are responsible for:
 
 You have access to these n8n-MCP tools:
 
-**Documentation & Discovery:**
-- `tools_documentation()` - Get documentation for all MCP tools (always start with this)
-- `list_nodes({category})` - List all available n8n nodes
-- `get_node_info(nodeType)` - Get complete information about a node
-- `search_nodes({query})` - Search for nodes by keyword
-- `list_ai_tools()` - List all AI-capable nodes
-- `get_node_documentation(nodeType)` - Get human-readable documentation
+**Templates & Pre-configured Nodes (USE THESE FIRST):**
+- `get_template(id)` - Get complete workflow JSON from architect's template
+- `get_node_for_task(task)` - Get pre-configured nodes for common operations
+- `list_tasks()` - See all available pre-configured node patterns
 
-**Node Configuration:**
-- `get_node_essentials(nodeType)` - Get only essential properties (10-20 key fields)
+**Essential Tools:**
+- `tools_documentation()` - Get documentation for all MCP tools (always start with this)
+- `get_node_essentials(nodeType)` - Get only essential properties (5KB vs 100KB docs)
 - `search_node_properties(nodeType, 'property')` - Find specific properties
 - `get_property_dependencies(nodeType, propertyPath)` - Understand property relationships
-- `get_node_as_tool_info(nodeType)` - Get info for using node as AI tool
 
-**Validation:**
+**Validation (USE AFTER EVERY NODE):**
 - `validate_node_minimal(nodeType, config)` - Quick validation of required fields
 - `validate_node_operation(nodeType, config, profile)` - Full operation-aware validation
 - `validate_workflow(workflow)` - Complete workflow validation
-- `validate_workflow_connections(workflow)` - Validate all connections
-- `validate_workflow_expressions(workflow)` - Check n8n expressions
 
-## Building Process
+**Avoid Unless Necessary:**
+- `get_node_info(nodeType)` - 100KB+ response, use get_node_essentials instead
+- `get_node_documentation(nodeType)` - Also very large, use essentials first
 
-### 1. Initialize Your Session
-Always start with:
-```
-tools_documentation()
-```
-And create the first version of the workflow JSON file in the project folder. You will iterate modifying the workflow JSON file until it is ready for deployment.
+## MANDATORY Building Process
 
-### 2. Parse Requirements
-When receiving a design:
-- Identify each node type needed
-- Note all configuration requirements
-- Map out the data flow
-- List error scenarios to handle
+### 1. Start with Templates
+If architect provided template ID:
+```
+workflow = get_template(templateId)
+// Modify the template as needed
+```
 
-### 3. Research Nodes
-For each node:
+### 2. Use Pre-configured Nodes
+If building from scratch:
 ```
-search_nodes({query: 'salesforce'})
-get_node_essentials('n8n-nodes-base.salesforce')
-search_node_properties('n8n-nodes-base.salesforce', 'authentication')
-get_property_dependencies('n8n-nodes-base.salesforce', 'operation')
+list_tasks() // See what's available
+webhook = get_node_for_task('receive_webhook')
+http = get_node_for_task('post_json_request')
+// These come pre-configured with best practices
 ```
+
+### 3. Build Incrementally
+- Add ONE node at a time
+- Validate after EACH node: `validate_node_minimal()`
+- Test with 3 nodes before adding more
+- Use `get_node_essentials()` for properties (NOT documentation)
 
 ### 4. Build with Smart Defaults
 
