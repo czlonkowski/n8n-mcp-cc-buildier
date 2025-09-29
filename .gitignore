@@ -1,6 +1,8 @@
 # Ignore everything in workflows folder except the folder itself
 workflows/*
 !workflows/.gitkeep
+projects/*
+!projects/.gitkeep
 
 # Common files
 .DS_Store
@@ -11,3 +13,4 @@ node_modules/
 *.swp
 *.swo
 *~
+.mcp.json
