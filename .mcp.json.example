@@ -1,15 +1,24 @@
 {
   "mcpServers": {
     "n8n-mcp": {
-      "command": "npx",
-      "args": ["n8n-mcp"],
+      "command": "node",
+      "args": [
+        "/Users/romualdczlonkowski/Pliki/n8n-mcp/n8n-mcp/dist/mcp/index.js"
+      ],
       "env": {
         "MCP_MODE": "stdio",
         "LOG_LEVEL": "error",
         "DISABLE_CONSOLE_OUTPUT": "true",
-        "N8N_API_URL": "n8n_url",
-        "N8N_API_KEY": "n8n_api_key"
+        "N8N_API_URL": "YOUR_N8N_INSTANCE_URL",
+        "N8N_API_KEY": "YOUR_N8N_API_KEY_HERE"
       }
+    },
+    "Bright Data": {
+      "command": "npx",
+      "args": [
+        "mcp-remote",
+        "YOUR_BRIGHT_DATA_MCP_URL"
+      ]
     }
   }
 }
