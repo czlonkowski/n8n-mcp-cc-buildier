@@ -312,3 +312,7 @@ For each iteration:
 - Validation point after each addition
 - Testing strategy for new features
 - Performance impact assessment
+- When Architect is done designing workflow, it shoud save the plan in an .md file in project folder in projects/ You then interact with the user and discuss architecture (you need to summarize it). When you invoke @agent-n8n-workflow-builder then, you can use this file as context for the buildier
+- validate workflow after every partial update
+- Never use full workflow update to fix connections. Use update_partial_workflow connection fixing capabilities
+- After each conversaction compact, call tools_documentation to have the overview of tools always in your context memory
